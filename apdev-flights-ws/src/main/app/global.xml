@@ -8,5 +8,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
     <context:property-placeholder location=" flights-${env}.properties"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port=" ${http.port}" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="United_REST_Request_Configuration" host="0.0.0.0" port="9090" doc:name="HTTP Request Configuration"/>
+    <http:request-config name="American_HTTP_Request_Configuration" host="0.0.0.0" port="80" doc:name="HTTP Request Configuration">
+        <http:raml-api-configuration location="https://anypoint.mulesoft.com/exchange/api/v1/organizations/a7117816-2964-4351-a664-6b206c994c96/assets/a7117816-2964-4351-a664-6b206c994c96/american-flights-api/1.0.2/api/root"/>
+    </http:request-config>
 </mule>
